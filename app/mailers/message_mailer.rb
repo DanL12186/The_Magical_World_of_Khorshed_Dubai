@@ -3,7 +3,7 @@ class MessageMailer < ApplicationMailer
   
   def contact(message)
     @body = message.body
-    mg_client = Mailgun::Client.new(ENV['MAIL_GUN_API_KEY'])
+    mg_client = Mailgun::Client.new(ENV['MAILGUN_API_KEY'])
     message_params = { from: message.email,
                         to: ENV['EMAIL'],
                         subject: 'Your Website',
