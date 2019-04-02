@@ -1,0 +1,15 @@
+<%= form_with model: @message do | f | %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+
+  <%= f.label :message %>
+  <%= f.text_area :body %>
+
+  <%= f.label :phone_number %>
+  <%= f.text_field :phone_number %>
+  
+  <%= f.submit %>
+<% end %>
