@@ -193,7 +193,25 @@
       </div>
 
     </div>
+    <div class='row text-center img-fluid w-50'>
+  <div class=<%= "flipbook-#{@book.format} img-fluid w-50" %> style='margin-bottom: 20px;'>
+    <div class='hard'> <%= image_tag "#{folder_name(@book.name)}/cover.jpg", class: 'img-fluid', size: page_size(@book.format) %> Cover </div>
+    <div class="hard"> <%= image_tag "#{folder_name(@book.name)}/first-page.jpg", class: 'img-fluid', size: page_size(@book.format) %> Page 1</div>
+
+    <% (2..@book.page_count - 2).each do | page | %>
+      <div> <%= image_tag "#{folder_name(@book.name)}/page-#{page}.jpg", class: 'img-fluid', size: page_size(@book.format) %> Page <%= page %> </div>
+    <% end %>
+    
+    <div> <%= image_tag "#{folder_name(@book.name)}/penultimate-page.jpg", class: 'img-fluid', size: page_size(@book.format) %> Page <%= @book.page_count-1 %> </div>
+
+    <div class="hard"><%= image_tag "#{folder_name(@book.name)}/last-page.jpg", class: 'img-fluid', size: page_size(@book.format) %> Page <%= @book.page_count %> </div>
+    <div class="hard"><%= image_tag "#{folder_name(@book.name)}/back-cover.jpg", class: 'img-fluid', size: page_size(@book.format) %> Back Cover </div>
+  </div>
+</div>
+
   </section>
+
+
 
   <!-- Footer -->
   <footer class="bg-black small text-center text-white-50">
@@ -211,22 +229,6 @@
 </body>
 
 </html>
-
-<div class='container' id = "conty">
-  <div class=<%= "flipbook-#{@book.format}" %> style='margin-bottom: 20px; margin-top: 50px;'>
-    <div class='hard'> <%= image_tag "#{folder_name(@book.name)}/cover.jpg", size: page_size(@book.format) %> Cover </div>
-    <div class="hard"> <%= image_tag "#{folder_name(@book.name)}/first-page.jpg", size: page_size(@book.format) %> Page 1</div>
-
-    <% (2..@book.page_count - 2).each do | page | %>
-      <div> <%= image_tag "#{folder_name(@book.name)}/page-#{page}.jpg", size: page_size(@book.format) %> Page <%= page %> </div>
-    <% end %>
-    
-    <div> <%= image_tag "#{folder_name(@book.name)}/penultimate-page.jpg", size: page_size(@book.format) %> Page <%= @book.page_count-1 %> </div>
-
-    <div class="hard"><%= image_tag "#{folder_name(@book.name)}/last-page.jpg", size: page_size(@book.format) %> Page <%= @book.page_count %> </div>
-    <div class="hard"><%= image_tag "#{folder_name(@book.name)}/back-cover.jpg", size: page_size(@book.format) %> Back Cover </div>
-  </div>
-</div>
 
 <div class='container'>
   <div class = 'row'>
