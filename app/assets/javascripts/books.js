@@ -45,6 +45,7 @@ $(document).on('turbolinks:load', function() {
         $(this.el).turn({
             gradients: true,
             acceleration: true,
+            duration: 1400,
             width: 990,
             height: 380
         });
