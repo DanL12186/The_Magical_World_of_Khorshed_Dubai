@@ -19,7 +19,6 @@
 </head>
 
 <body id="page-top">
-
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
@@ -97,7 +96,8 @@
               <div class="project-text w-100 my-auto text-center text-lg-left">
                 <h4 class="text-white">Miss Dolphin's Class</h4>
                 <p class="mb-0 text-white-50">Miss Dolphin teaches a class of young sea creatures.</p>
-                <hr class="d-none d-lg-block mb-0 ml-0">
+                <br>
+                <%= render partial: "book_modal" %>
               </div>
             </div>
           </div>
@@ -123,6 +123,11 @@
       </div>
 
     </div>
+  </section>
+
+  <!-- BOOK SECTION -->
+  <section class="book-section bg-black">
+    <%= render partial: "book_modal" %>
   </section>
 
   <!-- Signup Section -->
@@ -191,27 +196,8 @@
           <i class="fab fa-facebook-f"></i>
         </a>
       </div>
-
     </div>
-    <div class='row text-center img-fluid w-50'>
-  <div class=<%= "flipbook-#{@book.format} img-fluid w-50" %> style='margin-bottom: 20px;'>
-    <div class='hard'> <%= image_tag "#{folder_name(@book.name)}/cover.jpg", class: 'img-fluid', size: page_size(@book.format) %> Cover </div>
-    <div class="hard"> <%= image_tag "#{folder_name(@book.name)}/first-page.jpg", class: 'img-fluid', size: page_size(@book.format) %> Page 1</div>
-
-    <% (2..@book.page_count - 2).each do | page | %>
-      <div> <%= image_tag "#{folder_name(@book.name)}/page-#{page}.jpg", class: 'img-fluid', size: page_size(@book.format) %> Page <%= page %> </div>
-    <% end %>
-    
-    <div> <%= image_tag "#{folder_name(@book.name)}/penultimate-page.jpg", class: 'img-fluid', size: page_size(@book.format) %> Page <%= @book.page_count-1 %> </div>
-
-    <div class="hard"><%= image_tag "#{folder_name(@book.name)}/last-page.jpg", class: 'img-fluid', size: page_size(@book.format) %> Page <%= @book.page_count %> </div>
-    <div class="hard"><%= image_tag "#{folder_name(@book.name)}/back-cover.jpg", class: 'img-fluid', size: page_size(@book.format) %> Back Cover </div>
-  </div>
-</div>
-
   </section>
-
-
 
   <!-- Footer -->
   <footer class="bg-black small text-center text-white-50">
