@@ -1,38 +1,64 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
-
-//width = 2x each image width, since it's two pages for the full layout, height is just height, same as above ^
-
 $(document).on('turbolinks:load', function() {
+  /* Turn.js responsive book */
+  let loadBook = () =>{
+    'use strict';
+    var module = {
+      ratio: 2.62,
+      init: function (id) {
+        var me = this;
+          console.log(this)
+          // if older browser then don't run javascript
+          if (document.addEventListener) {
+            this.el = document.getElementById(id);
+            this.resize();
+            this.plugins();
+            console.log(this.plugins)
 
-  if ($(".flipbook-single")[0]) {
-    $(".flipbook-single").turn({
-      width: 1520,
-      height: 990,
-      acceleration: true,
-      duration: 1200
-      //autoCenter: true
-    });
-  }
+            // on window resize, update the plugin size
+            window.addEventListener('resize', function (e) {
+                var size = me.resize();
+                $(me.el).turn('size', size.width, size.height);
+            });
+          }
+      },
+      resize: function () {
+        // reset the width and height to the css defaults
+        this.el.style.width = '';
+        this.el.style.height = '';
 
-  if ($(".flipbook-double")[0]) {
-    $(".flipbook-double").turn({
-      width: 990,
-      height: 380,
-      acceleration: true,
-      duration: 1400
-    });
+        var width = this.el.clientWidth,
+            height = Math.round(width / this.ratio),
+            padded = Math.round(document.body.clientHeight * 0.9);
+
+        // if the height is too big for the window, constrain it
+        if (height > padded) {
+            height = padded;
+            width = Math.round(height * this.ratio);
+        }
+
+        // set the width and height matching the aspect ratio
+        this.el.style.width = width + 'px';
+        this.el.style.height = height + 'px';
+
+        return {
+            width: width,
+            height: height
+        };
+      },
+      plugins: function () {
+        // run the plugin
+        $(this.el).turn({
+            gradients: true,
+            acceleration: true,
+            width: 990,
+            height: 380
+        });
+        // hide the body overflow
+        document.body.className = 'hide-overflow';
+      }
+    };
+
+    module.init('book');
   };
-
-
-
-
-  
-
-  // $(".flipbook-double").on('click', function() {
-  //   this.style.transition = '1.5s';
-  //   this.style.height = '500px';
-  //   this.style.width = '1200px';
-  // })
-
+  loadBook();
 })

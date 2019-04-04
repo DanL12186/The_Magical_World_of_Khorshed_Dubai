@@ -14,3 +14,51 @@
  @import "bootstrap";
  //@import "grayscale";
 
+.book-section{
+	padding: 5rem 5rem;
+}
+
+.modal-dialog{
+  max-width: 90%;
+}
+
+.modal-header{
+  border-bottom: none;
+}
+
+.t {
+  display: table;
+  width: 100%;
+  height: auto;
+}
+
+.tc {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.rel {
+  position: relative;
+}
+
+.book {
+  margin: 0 auto;
+  width: 90%;
+  height: auto;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.book .page {
+  height: auto;
+}
+
+.book .page img {
+  max-width: 100%;
+  height: auto;
+}
