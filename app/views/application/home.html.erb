@@ -72,12 +72,12 @@
       <!-- Featured Project Row -->
       <div class="row align-items-center no-gutters mb-4 mb-lg-5">
         <div class="col-xl-6 col-lg-7">
-          <%= image_tag "sir_joe/cover", style: "max-height: 500px" %>
+          <%= image_tag "#{to_folder_name(@top_book.name)}/cover", style: "max-height: 500px" %>
         </div>
         <div class="col-xl-4 col-lg-5">
           <div class="featured-text text-center text-lg-left">
-            <h4>Sir Joe's Quest</h4>
-            <p class="text-black-50 mb-0"> <%= @book.short_summary %> </p>
+            <h4> <% @top_book.name %> </h4>
+            <p class="text-black-50 mb-0"> <%= @top_book.short_summary %> </p>
           </div>
         </div>
       </div>
@@ -85,7 +85,7 @@
       <!-- Project One Row -->
       <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
         <div class="col-lg-6" id = 'pj-section-pic-1-div' class="readBook" data-toggle="modal" data-target="#exampleModalCenter">
-          <%= image_tag "#{to_folder_name(@book.name)}/cover", class: 'img-fluid'%>
+          <%= image_tag "#{to_folder_name(@second_book.name)}/cover", class: 'img-fluid'%>
         </div>
         <div class="col-lg-6">
            
@@ -96,7 +96,7 @@
                 <p class="mb-0 text-white-50">Miss Dolphin teaches a class of young sea creatures.</p>
                 
                 <br>
-                <%= render partial: "book_modal" %>
+                <%= render partial: "book_modal", locals: { book: @second_book } %>
               </div>
             </div>
           </div>
