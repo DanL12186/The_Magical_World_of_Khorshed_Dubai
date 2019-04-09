@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -12,10 +11,8 @@
   <link href="https://blackrockdigital.github.io/startbootstrap-grayscale/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
   <!-- Custom styles for this template -->
-  <link href="https://blackrockdigital.github.io/startbootstrap-grayscale/css/grayscale.min.css" rel="stylesheet">
-
+ <link href="https://blackrockdigital.github.io/startbootstrap-grayscale/css/grayscale.min.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -80,22 +77,24 @@
         <div class="col-xl-4 col-lg-5">
           <div class="featured-text text-center text-lg-left">
             <h4>Sir Joe's Quest</h4>
-            <p class="text-black-50 mb-0">Sir Joe of the Picnic Table goes on a quest to find the source of flame coming from another castle</p>
+            <p class="text-black-50 mb-0"> <%= @book.short_summary %> </p>
           </div>
         </div>
       </div>
 
       <!-- Project One Row -->
       <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
-        <div class="col-lg-6">
-          <%= image_tag "sandy_school/cover", class: 'img-fluid'%>
+        <div class="col-lg-6" id = 'pj-section-pic-1-div' class="readBook" data-toggle="modal" data-target="#exampleModalCenter">
+          <%= image_tag "#{to_folder_name(@book.name)}/cover", class: 'img-fluid'%>
         </div>
         <div class="col-lg-6">
+           
           <div class="bg-black text-center h-100 project">
             <div class="d-flex h-100">
               <div class="project-text w-100 my-auto text-center text-lg-left">
                 <h4 class="text-white">Miss Dolphin's Class</h4>
                 <p class="mb-0 text-white-50">Miss Dolphin teaches a class of young sea creatures.</p>
+                
                 <br>
                 <%= render partial: "book_modal" %>
               </div>
@@ -151,49 +150,15 @@
   <!-- Contact Section -->
   <section class="contact-section bg-black">
     <div class="container">
-
-      <div class="row">
-
-        <div class="col-md-4 mb-3 mb-md-0">
-          <div class="card py-4 h-100">
-            <div class="card-body text-center">
-              <i class="fas fa-map-marked-alt text-primary mb-2"></i>
-              <h4 class="text-uppercase m-0">Address</h4>
-              <hr class="my-4">
-              <div class="small text-black-50">4923 Market Street, Orlando FL</div>
-            </div>
+      <div class="card py-4 h-100">
+        <div class="card-body text-center">
+          <i class="fas fa-envelope text-primary mb-2"></i>
+          <h4 class="text-uppercase m-0"> <%= link_to("Email", messages_path) %> </h4>
+          <hr class="my-4">
+          <div class="small text-black-50">
+            <%= link_to("daniel.lempesis@gmail.com", messages_path) %>
           </div>
         </div>
-
-        <div class="col-md-4 mb-3 mb-md-0">
-          <div class="card py-4 h-100">
-            <div class="card-body text-center">
-              <i class="fas fa-envelope text-primary mb-2"></i>
-              <h4 class="text-uppercase m-0">Email</h4>
-              <hr class="my-4">
-              <div class="small text-black-50">
-                <a href="/messages" method='post'>daniel.lempesis@gmail.com</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 mb-3 mb-md-0">
-          <div class="card py-4 h-100">
-            <div class="card-body text-center">
-              <i class="fas fa-mobile-alt text-primary mb-2"></i>
-              <h4 class="text-uppercase m-0">Phone</h4>
-              <hr class="my-4">
-              <div class="small text-black-50">+1 (555) 902-8832</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="social d-flex justify-content-center">
-        <a href="#" class="mx-2">
-          <i class="fab fa-facebook-f"></i>
-        </a>
       </div>
     </div>
   </section>
