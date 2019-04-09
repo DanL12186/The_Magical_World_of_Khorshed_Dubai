@@ -3,7 +3,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title" id="exampleModalLongTitle"> <%= @book.name %> </h3>
+        <h3 class="modal-title" id="exampleModalLongTitle"> <%= book.name %> </h3>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -13,19 +13,19 @@
           <div class="tc rel">
 
             <div class="book" id="book">
-              <div class='hard'> <%= image_tag "#{folder_name(@book.name)}/cover.jpg", class: "page"%> </div>
-              <div class='hard'> <%= image_tag "#{folder_name(@book.name)}/first-page.jpg", class: "page" %> </div>
+              <div class='hard'> <%= image_tag "#{folder_name(book.name)}/cover.jpg", class: "page"%> </div>
+              <div class='hard'> <%= image_tag "#{folder_name(book.name)}/first-page.jpg", class: "page" %> </div>
 
-              <% (2..@book.page_count - 2).each do | page | %>
+              <% (2..book.page_count - 2).each do | page | %>
                 <div> 
-                  <%= image_tag "#{folder_name(@book.name)}/page-#{page}.jpg", class: "page" %>
+                  <%= image_tag "#{folder_name(book.name)}/page-#{page}.jpg", class: "page" %>
                 </div>
               <% end %>
 
-              <div> <%= image_tag "#{folder_name(@book.name)}/penultimate-page.jpg", class: "page" %> </div>
+              <div> <%= image_tag "#{folder_name(book.name)}/penultimate-page.jpg", class: "page" %> </div>
 
-              <div class='hard'> <%= image_tag "#{folder_name(@book.name)}/last-page.jpg", class: "page" %> </div>
-              <div class='hard'> <%= image_tag "#{folder_name(@book.name)}/back-cover.jpg", class: "page" %> </div>
+              <div class='hard'> <%= image_tag "#{folder_name(book.name)}/last-page.jpg", class: "page" %> </div>
+              <div class='hard'> <%= image_tag "#{folder_name(book.name)}/back-cover.jpg", class: "page" %> </div>
             </div>
             
           </div>
