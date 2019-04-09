@@ -14,15 +14,15 @@
  @import "bootstrap";
  //@import "grayscale";
 
-.book-section{
+.book-section {
 	padding: 5rem 5rem;
 }
 
-.modal-dialog{
+.modal-dialog {
   max-width: 90%;
 }
 
-.modal-header{
+.modal-header {
   border-bottom: none;
 }
 
@@ -60,4 +60,19 @@
 .book .page img {
   max-width: 100%;
   height: auto;
+}
+
+
+//=======
+
+#pj-section-pic-1-div {
+  transition: 0.66s;
+}
+
+#pj-section-pic-1-div:hover {
+  box-shadow: 1px 1px 18px rgba(0,0,0,1.0);
+}
+
+.hcover:hover {
+  box-shadow: 1px 1px 18px rgba(0,0,0,1.0);
 }
