@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function() {
+$(window).on('load', function() {
   
   /* Turn.js responsive book */
   const loadBook = () => {
