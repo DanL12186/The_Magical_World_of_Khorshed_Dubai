@@ -65,14 +65,14 @@
 
 //=======box-shadow for books on front page
 
-#pj-section-pic-1-div {
-  transition: 0.66s;
-}
+// #pj-section-pic-1-div {
+//   transition: 0.66s;
+// }
 
-#pj-section-pic-1-div:hover {
+#pj-section-pic-1-div {
   box-shadow: 1px 1px 18px rgba(0,0,0,1.0);
 }
 
-.hcover:hover {
+.hcover {
   box-shadow: 1px 1px 18px rgba(0,0,0,1.0);
 }
