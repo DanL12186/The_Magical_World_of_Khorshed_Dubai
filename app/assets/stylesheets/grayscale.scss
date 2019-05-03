@@ -198,6 +198,12 @@
   padding: 2rem;
 }
 
+@media (min-width: 1200px) {
+  .projects-section #displayed-book-cover-home {
+    max-width: 80%;
+  }
+}
+
 @media (min-width: 992px) {
   .projects-section .featured-text {
     padding: 0 0 0 2rem;
