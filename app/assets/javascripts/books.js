@@ -1,18 +1,18 @@
-$(window).on('load', function() {
-  
+$(document).on('turbolinks:load', function() {
+  let clicked;
   /* Turn.js responsive book */
-  const loadBook = () => {
+  function loadBook() {
     'use strict';
     const module = {
       ratio: 2.62,
-      init: function (id) {
-        this.el = document.getElementById(id);
-        this.resize();
-        this.plugins();
+      init: id => {
+        module.el = document.getElementById(id);
+        module.resize();
+        module.plugins();
 
         // on window resize, update the plugin size
         $(window).on('resize', function() {
-          const size = module.resize();
+          var size = module.resize();
           $(module.el).turn('size', size.width, size.height);
         });
       },
@@ -56,5 +56,10 @@ $(window).on('load', function() {
 
     module.init('book');
   };
-  loadBook();
+  $("#pj-section-pic-1-div").on('click', function() {
+    if (!clicked) {
+      clicked = true;
+      loadBook();
+    }
+  })
 })
