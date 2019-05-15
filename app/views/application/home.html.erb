@@ -11,6 +11,7 @@
   <link href="https://blackrockdigital.github.io/startbootstrap-grayscale/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Dancing+Script">
   <!-- Custom styles for this template -->
   
 </head>
@@ -46,20 +47,19 @@
   </header>
 
   <!-- About Section -->
-  <section id="about" class="about-section text-center">
+  <section id="about" class="about-section text-center library">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto">
-          <h2 class="text-white mb-4">Built with Bootstrap 4</h2>
-          <p class="text-white-50">Grayscale is a free Bootstrap theme created by Start Bootstrap. It can be yours right now, simply download the template on
-            <a href="https://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>
+          <h2 class="text-white mb-4">Illustrated Books for Children</h2>
+          <p class="text-white-50">Click on a book below.</p>
         </div>
       </div>
-      <img src="https://blackrockdigital.github.io/startbootstrap-grayscale/img/ipad.png" class="img-fluid" alt="">
+      
     </div>
   </section>
 
-  <!-- Projects Section -->
+  <!-- Books (Projects) Section -->
   <section id="projects" class="projects-section bg-light">
     <div class="container">
 
@@ -86,8 +86,8 @@
           <div class="bg-black text-center h-100 project">
             <div class="d-flex h-100">
               <div class="project-text w-100 my-auto text-center text-lg-left">
-                <h4 class="text-white">Miss Dolphin's Class</h4>
-                <p class="mb-0 text-white-50">Miss Dolphin teaches a class of young sea creatures.</p>
+                <h4 class="text-white"> <%= @second_book.name %> </h4>
+                <p class="mb-0 text-white-50"> <%= @second_book.short_summary %> </p>
                 
                 <br>
                 <%= render partial: "book_modal", locals: { book: @second_book } %>
@@ -107,7 +107,7 @@
             <div class="d-flex h-100">
               <div class="project-text w-100 my-auto text-center text-lg-right">
                 <h4 class="text-white">Mountains</h4>
-                <p class="mb-0 text-white-50">Another example of a project with its respective description. These sections work well responsively as well, try this theme on a small screen!</p>
+                <p class="mb-0 text-white-50">Another example of a project with its respective description. These sections work responsively as well, try this theme on a small screen!</p>
                 <hr class="d-none d-lg-block mb-0 mr-0">
               </div>
             </div>
