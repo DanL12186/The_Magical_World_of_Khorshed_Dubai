@@ -1,5 +1,7 @@
 $(document).on('turbolinks:load', function() {
-  let clicked;
+  let clicked,
+      size;
+
   /* Turn.js responsive book */
   function loadBook() {
     'use strict';
@@ -12,7 +14,7 @@ $(document).on('turbolinks:load', function() {
 
         // on window resize, update the plugin size
         $(window).on('resize', function() {
-          var size = module.resize();
+          size = module.resize();
           $(module.el).turn('size', size.width, size.height);
         });
       },
@@ -56,10 +58,22 @@ $(document).on('turbolinks:load', function() {
 
     module.init('book');
   };
+
+  //when modal is clicked for the first time, load images, load book
   $("#pj-section-pic-1-div").on('click', function() {
-    if (!clicked) {
-      clicked = true;
+    if (!clicked) {      
+      const lazyPages = document.getElementsByClassName('page lazy')
+
+      for (let i = 0; i < lazyPages.length; i++) {
+        const page = lazyPages[i]
+        ,     imageLink = `/assets/${page.getAttribute('image_placeholder')}`
+        
+        page.src = imageLink
+      }
+
       loadBook();
+      
+      clicked = true;
     }
   })
 })
