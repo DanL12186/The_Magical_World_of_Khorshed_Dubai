@@ -1,4 +1,5 @@
 $(document).on('turbolinks:load', function() {
+  const webPSupport = !!document.getElementsByClassName('no-webp').length
   let clicked,
       size;
 
@@ -59,18 +60,41 @@ $(document).on('turbolinks:load', function() {
     module.init('book');
   };
 
-  //when modal is clicked for the first time, load images, load book
-  $("#pj-section-pic-1-div").on('click', function() {
-    if (!clicked) {      
-      const lazyPages = document.getElementsByClassName('page lazy')
+  function changeStaticWebPToJPG() {
+    const staticImages = document.getElementsByClassName('static-img-js')
 
-      for (let i = 0; i < lazyPages.length; i++) {
-        const page = lazyPages[i]
-        ,     imageLink = `/assets/${page.getAttribute('image_placeholder')}`
-        
-        page.src = imageLink
+    for (let i = 0; i < staticImages.length; i++) {
+      staticImages[i].src = staticImages[i].src.replace(/webp/g, 'jpg')
+    }
+  }
+
+  function loadImages() {
+    const lazyPages = document.getElementsByClassName('page lazy')
+
+    //load middle pages (2 through n-3)
+    for (let i = 0; i < lazyPages.length; i++) {
+      const page = lazyPages[i]
+      ,     imageLink = `/assets/${page.getAttribute('image_placeholder')}`
+      
+      if (!webPSupport) {
+        imageLink = imageLink.replace(/webp/g, 'jpg')
       }
 
+      page.src = imageLink
+    }
+  }
+   
+  //convert all non-CSS, non-lazy images to JPEG if browser doesn't support WebP
+  if (!webPSupport) {
+    changeStaticWebPToJPG()
+  };
+
+
+  //when modal is clicked for the first time, load images, load book
+  $("#pj-section-pic-1-div").on('click', function() {
+    if (!clicked) {
+      
+      loadImages(); 
       loadBook();
       
       clicked = true;
