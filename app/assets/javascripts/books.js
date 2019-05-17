@@ -86,7 +86,7 @@ $(document).on('turbolinks:load', function() {
   }
    
   //convert all non-CSS, non-lazy images to JPEG if browser doesn't support WebP
-  if (!noWebPSupport) {
+  if (noWebPSupport) {
     changeStaticWebPToJPG()
   };
 
