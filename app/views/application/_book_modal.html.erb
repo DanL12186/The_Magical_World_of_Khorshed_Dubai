@@ -14,22 +14,25 @@
 
             <div class="book" id="book">
               <div class='hard'> 
-                <%= image_tag "#{folder_name(book.name)}/cover.jpg", class: "page"%> 
+                <%= image_tag "#{to_folder_name(book.name)}/webp/cover", class: "page static-img-js"%> 
               </div>
               <div class='hard'> 
-                <%= image_tag "#{folder_name(book.name)}/first-page.jpg", class: "page" %> 
+                <%= image_tag "#{to_folder_name(book.name)}/webp/first-page", class: "page static-img-js" %> 
               </div>
 
+             <!-- lazy load the rest of the pages on clicking modal -->
               <% (2..book.page_count - 2).each do | page | %>
                 <div> 
-                  <%= image_tag "", image_placeholder: "#{folder_name(book.name)}/page-#{page}.jpg", class: "page lazy"%>
+                  <%= image_tag "", image_placeholder: "#{to_folder_name(book.name)}/webp/page-#{page}", class: "page lazy"%>
                 </div>
               <% end %>
 
-              <div> <%= image_tag "#{folder_name(book.name)}/penultimate-page.jpg", class: "page" %> </div>
+              <div> 
+                <%= image_tag "", image_placeholder: "#{to_folder_name(book.name)}/webp/penultimate-page", class: "page lazy" %> 
+              </div>
 
-              <div class='hard'> <%= image_tag "#{folder_name(book.name)}/last-page.jpg", class: "page" %> </div>
-              <div class='hard'> <%= image_tag "#{folder_name(book.name)}/back-cover.jpg", class: "page" %> </div>
+              <div class='hard'> <%= image_tag "", image_placeholder: "#{to_folder_name(book.name)}/webp/last-page", class: "page lazy" %> </div>
+              <div class='hard'> <%= image_tag "", image_placeholder: "#{to_folder_name(book.name)}/webp/back-cover", class: "page lazy" %> </div>
             </div>
             
           </div>
