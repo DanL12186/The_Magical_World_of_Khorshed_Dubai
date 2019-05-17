@@ -1,5 +1,5 @@
 $(document).on('turbolinks:load', function() {
-  const webPSupport = !!document.getElementsByClassName('no-webp').length
+  const noWebPSupport = !!document.getElementsByClassName('no-webp').length
   let clicked,
       size;
 
@@ -60,11 +60,12 @@ $(document).on('turbolinks:load', function() {
     module.init('book');
   };
 
+  //changes webp => jpeg, although also gets rid of fingerprinting
   function changeStaticWebPToJPG() {
     const staticImages = document.getElementsByClassName('static-img-js')
 
     for (let i = 0; i < staticImages.length; i++) {
-      staticImages[i].src = staticImages[i].src.replace(/webp/g, 'jpg')
+      staticImages[i].src = staticImages[i].src.replace(/webp/g, 'jpg').replace(/-[^\.jpg]+/, '')
     }
   }
 
@@ -76,16 +77,16 @@ $(document).on('turbolinks:load', function() {
       const page = lazyPages[i]
       ,     imageLink = `/assets/${page.getAttribute('image_placeholder')}`
       
-      if (!webPSupport) {
-        imageLink = imageLink.replace(/webp/g, 'jpg')
+      if (noWebPSupport) {
+        page.src = imageLink.replace(/webp/g, 'jpg')
+      } else {
+        page.src = imageLink
       }
-
-      page.src = imageLink
     }
   }
    
   //convert all non-CSS, non-lazy images to JPEG if browser doesn't support WebP
-  if (!webPSupport) {
+  if (!noWebPSupport) {
     changeStaticWebPToJPG()
   };
 
