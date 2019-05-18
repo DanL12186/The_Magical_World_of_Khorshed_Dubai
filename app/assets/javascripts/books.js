@@ -90,7 +90,6 @@ $(document).on('turbolinks:load', function() {
     changeStaticWebPToJPG()
   };
 
-
   //when modal is clicked for the first time, load images, load book
   $("#pj-section-pic-1-div").on('click', function() {
     if (!clicked) {
