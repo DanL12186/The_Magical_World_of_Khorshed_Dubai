@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <%= favicon_link_tag asset_path('manor.ico'), rel: 'icon', type: 'image/x-icon' %>
-    <title> <%= content_for?(:title) ? yield(:title) : 'Dubash Designs' %> </title>
+    <title> 
+      <%= content_for?(:title) ? yield(:title) : 'Dubash Designs' %> 
+    </title>
+    <%= favicon_link_tag asset_path('favicon.ico'), rel: 'icon', type: 'image/x-icon' %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
