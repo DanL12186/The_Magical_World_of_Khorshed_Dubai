@@ -65,10 +65,12 @@ $(document).on('turbolinks:load', function() {
     const staticImages = document.getElementsByClassName('static-img-js')
 
     for (let i = 0; i < staticImages.length; i++) {
-      staticImages[i].src = staticImages[i].src.replace(/webp/g, 'jpg')
+      const page = staticImages[i]
+      page.src = page.src.replace(/webp/g, 'jpg').replace(/-[^\.jpg]+/, '')
     }
   }
 
+  //this is an imperfect solution, as fingerprinting is bypassed completely, even for webp images
   function loadImages() {
     const lazyPages = document.getElementsByClassName('page lazy')
 
