@@ -99,7 +99,7 @@
   min-height: 35rem;
   padding: 15rem 0;
 
-  background: linear-gradient(to bottom, rgba(22, 22, 22, 0.1) 0%, rgba(22, 22, 22, 0.5) 75%, #161616 100%), url("img/bg-masthead.webp");
+  background: linear-gradient(to bottom, rgba(22, 22, 22, 0.1) 0%, rgba(22, 22, 22, 0.5) 75%, #161616 100%), image-url("img/bg-masthead.webp");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -108,7 +108,7 @@
 
 //fallback for browsers like Safari + iOS browsers which don't support webp formats
 .no-webp .masthead {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(22, 22, 22, 0.1)), color-stop(75%, rgba(22, 22, 22, 0.5)), to(#161616)), url("img/bg-masthead.jpg");
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(22, 22, 22, 0.1)), color-stop(75%, rgba(22, 22, 22, 0.5)), to(#161616)), image-url("img/bg-masthead.jpg");
 }
 
 .masthead h1 {
@@ -182,7 +182,7 @@
 
 .about-section {
   padding-top: 25rem;
-  background: linear-gradient(to bottom, #161616 0%, rgba(22, 22, 22, 0.2) 25%, rgba(22, 22, 22, 0.7) 100%), url("img/library.webp");
+  background: linear-gradient(to bottom, #161616 0%, rgba(22, 22, 22, 0.2) 25%, rgba(22, 22, 22, 0.7) 100%), image-url("img/library.webp");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -190,7 +190,7 @@
 }
 
 .no-webp .about-section {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(22, 22, 22, 0.2)), color-stop(25%, rgba(22, 22, 22, 0.3)), to(#161616)), url("img/library.jpg");
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(22, 22, 22, 0.2)), color-stop(25%, rgba(22, 22, 22, 0.3)), to(#161616)), image-url("img/library.jpg");
 }
 
 .about-section p {
@@ -237,12 +237,12 @@
 
 //fallback image for browsers like Safari which don't support WebP
 .no-webp .signup-section {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(22, 22, 22, 0.1)), color-stop(75%, rgba(22, 22, 22, 0.5)), to(#161616)), url("img/bg-signup.jpg")
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(22, 22, 22, 0.1)), color-stop(75%, rgba(22, 22, 22, 0.5)), to(#161616)), image-url("img/bg-signup.jpg")
 }
 
 .signup-section {
   padding: 10rem 0;
-  background: linear-gradient(to bottom, rgba(22, 22, 22, 0.1) 0%, rgba(22, 22, 22, 0.5) 75%, #161616 100%), url("img/bg-signup.webp");
+  background: linear-gradient(to bottom, rgba(22, 22, 22, 0.1) 0%, rgba(22, 22, 22, 0.5) 75%, #161616 100%), image-url("img/bg-signup.webp");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;

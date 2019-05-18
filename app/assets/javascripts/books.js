@@ -65,7 +65,7 @@ $(document).on('turbolinks:load', function() {
     const staticImages = document.getElementsByClassName('static-img-js')
 
     for (let i = 0; i < staticImages.length; i++) {
-      staticImages[i].src = staticImages[i].src.replace(/webp/g, 'jpg').replace(/-[^\.jpg]+/, '')
+      staticImages[i].src = staticImages[i].src.replace(/webp/g, 'jpg')
     }
   }
 
