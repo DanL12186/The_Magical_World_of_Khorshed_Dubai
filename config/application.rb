@@ -13,7 +13,8 @@ module TheMagicalWorldOfKhorshedDubai
     config.assets.paths << Rails.root.join('node_modules/startbootstrap-grayscale/js')
     config.assets.paths << Rails.root.join('node_modules/startbootstrap-grayscale/scss')
     #enable text compression
-    config.middleware.insert_after ActionDispatch::Static, Rack::Deflater
+    config.middleware.insert_after(::Rack::Runtime, Rack::Deflater)
+    
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
