@@ -13,14 +13,24 @@ $(document).on('turbolinks:load', function() {
   /* Turn.js responsive book */
   function loadBook() {
     'use strict';
+    let fitInitialWindow;
+
     const module = {
       ratio: 2.62,
       init: id => {
         module.el = document.getElementById(id);
-        module.resize();
         module.plugins();
 
-        // on window resize, update the plugin size
+        //resize on the first click, timed immediately after module is opened
+        if (!fitInitialWindow) {
+          setTimeout(() => {
+            size = module.resize();
+            $(module.el).turn('size', size.width, size.height);
+            fitInitialWindow = true;
+          }, 0);
+        };
+
+        //after first click, on any future window resizing, update the plugin size
         $(window).on('resize', function() {
           size = module.resize();
           $(module.el).turn('size', size.width, size.height);
@@ -31,15 +41,8 @@ $(document).on('turbolinks:load', function() {
         this.el.style.width = '';
         this.el.style.height = '';
 
-        let width  = this.el.clientWidth,
-            height = Math.round(width / this.ratio),
-            padded = Math.round(document.body.clientHeight * 0.9);
-
-        // if the height is too big for the window, constrain it
-        if (height > padded) {
-          height = padded;
-          width  = Math.round(height * this.ratio);
-        }
+        let width  = document.body.clientWidth * 0.8,
+            height = Math.round(width / this.ratio);
 
         // set the width and height matching the aspect ratio
         this.el.style.width = `${width}px`
