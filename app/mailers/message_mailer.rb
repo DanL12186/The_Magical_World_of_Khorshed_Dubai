@@ -2,11 +2,13 @@ class MessageMailer < ApplicationMailer
   require 'mailgun'
   
   def contact(message)
-    @body = message.body
+    subject = message.subject unless message.subject.strip.empty?
     mg_client = Mailgun::Client.new(ENV['MAILGUN_API_KEY'])
-    message_params = { from: message.email,
+    
+    message_params = {  
+                        from: message.email,
                         to: ENV['EMAIL'],
-                        subject: 'Your Website',
+                        subject: subject || 'Dubash Designs',
                         text: message.body
                       }
 
