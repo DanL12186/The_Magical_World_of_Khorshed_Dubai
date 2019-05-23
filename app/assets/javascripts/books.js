@@ -2,7 +2,7 @@ $(document).on('turbolinks:load', function() {
   let clicked,
       size;
 
-  //waiting to make sure Modernizr has fired and changed the DOM
+  //waiting to make sure Modernizr has fired and changed the DOM before determining if browser supports WebP
   const noWebPSupport = new Promise((resolve, _) => {
     setTimeout(() => {
       const unsupported = !!document.getElementsByClassName('no-webp').length
@@ -18,35 +18,34 @@ $(document).on('turbolinks:load', function() {
     const module = {
       ratio: 2.62,
       init: id => {
-        module.el = document.getElementById(id);
+        module.book = document.getElementById(id);
+        
         module.plugins();
 
         //resize on the first click, timed immediately after module is opened
         if (!fitInitialWindow) {
-          setTimeout(() => {
-            size = module.resize();
-            $(module.el).turn('size', size.width, size.height);
-            fitInitialWindow = true;
-          }, 0);
-        };
-
+          size = module.resize();
+          $(module.book).turn('size', size.width, size.height);
+          fitInitialWindow = true;
+        }
+        
         //after first click, on any future window resizing, update the plugin size
         $(window).on('resize', function() {
           size = module.resize();
-          $(module.el).turn('size', size.width, size.height);
+          $(module.book).turn('size', size.width, size.height);
         });
       },
       resize: function () {
         // reset the width and height to the css defaults
-        this.el.style.width = '';
-        this.el.style.height = '';
+        this.book.style.width = '';
+        this.book.style.height = '';
 
         let width  = document.body.clientWidth * 0.8,
             height = Math.round(width / this.ratio);
 
         // set the width and height matching the aspect ratio
-        this.el.style.width = `${width}px`
-        this.el.style.height = `${height}px`
+        this.book.style.width = `${width}px`
+        this.book.style.height = `${height}px`
 
         return {
           width: width,
@@ -54,8 +53,7 @@ $(document).on('turbolinks:load', function() {
         };
       },
       plugins: function () {
-        // run the plugin
-        $(this.el).turn({
+        $(this.book).turn({
             gradients: true,
             acceleration: true,
             duration: 1400,
@@ -106,7 +104,7 @@ $(document).on('turbolinks:load', function() {
   $("#pj-section-pic-1-div").on('click', function() {
     if (!clicked) {
       
-      loadImages(); 
+      loadImages();
       loadBook();
       
       clicked = true;
