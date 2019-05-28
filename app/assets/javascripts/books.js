@@ -1,8 +1,7 @@
 $(document).on('turbolinks:load', function() {
-  let clicked,
-      size;
+  'use strict';
 
-  //waiting to make sure Modernizr has fired and changed the DOM before determining if browser supports WebP
+  //waits to make sure Modernizr has fired and changed the DOM before determining WebP support
   const noWebPSupport = new Promise((resolve, _) => {
     setTimeout(() => {
       const unsupported = !!document.getElementsByClassName('no-webp').length
@@ -10,29 +9,36 @@ $(document).on('turbolinks:load', function() {
     }, 100);
   });
 
-  /* Turn.js responsive book */
-  function loadBook() {
-    'use strict';
-    let fitInitialWindow;
+  const openedBooks = {};
 
+  /* Turn.js responsive book */
+  function loadBook(bookId) {
+    let fitInitialWindow,
+        size;
+
+    const book = document.getElementById(bookId)
+    ,     format = book.getAttribute('data-format')
+    ,     additionalHeight = () => format == 'single' ? size.height * 0.08 : 0
+  
     const module = {
-      ratio: 2.62,
-      init: id => {
-        module.book = document.getElementById(id);
-        
+      //ratio should eventually be a book object property
+      ratio: format == 'single' ? 1.535 : 2.62,
+      init: () => {
+        module.book = book;
         module.plugins();
 
-        //resize on the first click, timed immediately after module is opened
+        //properly size on the first click as modal is opened
         if (!fitInitialWindow) {
           size = module.resize();
-          $(module.book).turn('size', size.width, size.height);
+          $(module.book).turn('size', size.width, size.height + additionalHeight());
+          
           fitInitialWindow = true;
         }
         
-        //after first click, on any future window resizing, update the plugin size
+        //after first click, on any future window resizing, update the book size
         $(window).on('resize', function() {
           size = module.resize();
-          $(module.book).turn('size', size.width, size.height);
+          $(module.book).turn('size', size.width, size.height + additionalHeight());
         });
       },
       resize: function () {
@@ -40,10 +46,18 @@ $(document).on('turbolinks:load', function() {
         this.book.style.width = '';
         this.book.style.height = '';
 
+        //controls modal size
         let width  = document.body.clientWidth * 0.8,
-            height = Math.round(width / this.ratio);
+            height = Math.round(width / this.ratio),
+            padded = Math.round(window.innerHeight * 0.8);
 
-        // set the width and height matching the aspect ratio
+        // if the height is too big for the window, constrain it
+        if (height > padded) {
+          height = padded;
+          width  = Math.round(height * this.ratio);
+        }
+
+        // set the book width and height matching the aspect ratio
         this.book.style.width = `${width}px`
         this.book.style.height = `${height}px`
 
@@ -52,20 +66,21 @@ $(document).on('turbolinks:load', function() {
           height: height
         };
       },
-      plugins: function () {
+      plugins: function () {        
         $(this.book).turn({
             gradients: true,
             acceleration: true,
             duration: 1400,
-            width: 990,
-            height: 380
+            width: null,
+            height: null
         });
+        
         // hide the body overflow
         document.body.className = 'hide-overflow';
       }
     };
 
-    module.init('book');
+    module.init(bookId);
   };
 
   //changes webp => jpeg, although also gets rid of fingerprinting
@@ -79,8 +94,8 @@ $(document).on('turbolinks:load', function() {
   }
 
   //this is an imperfect solution, as fingerprinting is bypassed completely, even for webp images
-  function loadImages() {
-    const lazyPages = document.getElementsByClassName('page lazy')
+  function loadImages(bookId) {
+    const lazyPages = document.getElementsByClassName(`page lazy ${bookId}`)
 
     //load middle pages (2 through n-3)
     for (let i = 0; i < lazyPages.length; i++) {
@@ -101,13 +116,13 @@ $(document).on('turbolinks:load', function() {
   });
 
   //when modal is clicked for the first time, load images, load book
-  $("#pj-section-pic-1-div").on('click', function() {
-    if (!clicked) {
-      
-      loadImages();
-      loadBook();
-      
-      clicked = true;
-    }
+  $("#pj-section-pic-1-div, #top-book-pic-1-div").on('click', function() {
+    const bookId = this.getAttribute('data-bookname')
+    
+      if (!openedBooks[bookId]) {
+        loadImages(bookId);
+        loadBook(bookId);
+        openedBooks[bookId] = true
+      }
   })
 })
