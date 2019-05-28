@@ -1,5 +1,5 @@
 <!-- Book Modal -->
-<div class="modal fade" id="bookModalCenter" tabindex="-1" role="dialog" aria-labelledby="bookModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="bookModalCenter<%= book.id %>" tabindex="-1" role="dialog" aria-labelledby="bookModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content ">
       <div class="modal-header">
@@ -10,9 +10,8 @@
       </div>
       <div class="modal-body">
         <div class="t">
-          <div class="tc rel">
-
-            <div class="book" id="book">
+          <div class="tc rel"> 
+            <div class="book" id= "<%= book.name.downcase %>" data-format="<%= book.format %>" >
               <div class='hard'> 
                 <%= image_tag "#{to_folder_name(book.name)}/webp/cover.webp", class: "page static-img-js"%> 
               </div>
@@ -23,16 +22,16 @@
              <!-- lazy load the rest of the pages on clicking modal -->
               <% (2..book.page_count - 2).each do | page | %>
                 <div> 
-                  <%= image_tag "", image_placeholder: "#{to_folder_name(book.name)}/webp/page-#{page}.webp", class: "page lazy"%>
+                  <%= image_tag "", image_placeholder: "#{to_folder_name(book.name)}/webp/page-#{page}.webp", class: "page lazy #{book.name.downcase}"%>
                 </div>
               <% end %>
 
               <div> 
-                <%= image_tag "", image_placeholder: "#{to_folder_name(book.name)}/webp/penultimate-page.webp", class: "page lazy" %> 
+                <%= image_tag "", image_placeholder: "#{to_folder_name(book.name)}/webp/penultimate-page.webp", class: "page lazy #{book.name.downcase}" %> 
               </div>
 
-              <div class='hard'> <%= image_tag "", image_placeholder: "#{to_folder_name(book.name)}/webp/last-page.webp", class: "page lazy" %> </div>
-              <div class='hard'> <%= image_tag "", image_placeholder: "#{to_folder_name(book.name)}/webp/back-cover.webp", class: "page lazy" %> </div>
+              <div class='hard'> <%= image_tag "", image_placeholder: "#{to_folder_name(book.name)}/webp/last-page.webp", class: "page lazy #{book.name.downcase}" %> </div>
+              <div class='hard'> <%= image_tag "", image_placeholder: "#{to_folder_name(book.name)}/webp/back-cover.webp", class: "page lazy #{book.name.downcase}" %> </div>
             </div>
             
           </div>
