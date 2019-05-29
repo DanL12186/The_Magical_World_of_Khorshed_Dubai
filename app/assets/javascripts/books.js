@@ -20,36 +20,31 @@ $(document).on('turbolinks:load', function() {
     ,     format = book.getAttribute('data-format')
     ,     additionalHeight = () => format == 'single' ? size.height * 0.08 : 0
   
-    const module = {
+    const modal = {
       //ratio should eventually be a book object property
       ratio: format == 'single' ? 1.535 : 2.62,
-      init: () => {
-        module.book = book;
-        module.plugins();
+      init: function() {
+        this.book = book;
+        this.plugins();
 
         //properly size on the first click as modal is opened
         if (!fitInitialWindow) {
-          size = module.resize();
-          $(module.book).turn('size', size.width, size.height + additionalHeight());
-          
+          size = modal.resize();
+          $(modal.book).turn('size', size.width, size.height + additionalHeight());
           fitInitialWindow = true;
         }
         
         //after first click, on any future window resizing, update the book size
         $(window).on('resize', function() {
-          size = module.resize();
-          $(module.book).turn('size', size.width, size.height + additionalHeight());
+          size = modal.resize();
+          $(modal.book).turn('size', size.width, size.height + additionalHeight());
         });
       },
+      //gets new size requirements for modal and sets book size
       resize: function () {
-        // reset the width and height to the css defaults
-        this.book.style.width = '';
-        this.book.style.height = '';
-
-        //controls modal size
-        let width  = document.body.clientWidth * 0.8,
+        let width  = window.innerWidth * 0.8,
             height = Math.round(width / this.ratio),
-            padded = Math.round(window.innerHeight * 0.8);
+            padded = Math.round(window.innerHeight * 0.75);
 
         // if the height is too big for the window, constrain it
         if (height > padded) {
@@ -66,6 +61,7 @@ $(document).on('turbolinks:load', function() {
           height: height
         };
       },
+      //width and height will be set later by init
       plugins: function () {        
         $(this.book).turn({
             gradients: true,
@@ -80,7 +76,7 @@ $(document).on('turbolinks:load', function() {
       }
     };
 
-    module.init(bookId);
+    modal.init(bookId);
   };
 
   //changes webp => jpeg, although also gets rid of fingerprinting
