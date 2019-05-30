@@ -6,7 +6,7 @@ class MessageMailer < ApplicationMailer
     mg_client = Mailgun::Client.new(ENV['MAILGUN_API_KEY'])
     
     message_params = {  
-                        from: message.email,
+                        from: "#{message.name} <#{message.email}>",
                         to: ENV['EMAIL'],
                         subject: subject || 'Dubash Designs',
                         text: message.body
