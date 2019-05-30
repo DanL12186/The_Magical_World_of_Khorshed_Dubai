@@ -1,6 +1,6 @@
 'use strict';
 
-$(document).on('turbolinks:load', function() {
+document.addEventListener('turbolinks:load', function() {
   const openedBooks = {};
 
   //changes all initially-loaded images from webp => jpeg, although also gets rid of fingerprinting
@@ -71,9 +71,7 @@ $(document).on('turbolinks:load', function() {
         }
         
         //after first click, on any future window resizing, update the book size
-        $(window).on('resize', function() {
-          setBookAndModal();
-        });
+        window.addEventListener('resize', ()=> setBookAndModal());
       },
       //gets new size requirements for modal and sets book size
       resize: function () {
