@@ -1,19 +1,5 @@
 <% title("Books") %>
 <!-- currently only works with one of each type... single/double.. more than one of each book type breaks it -->
 <div class='container'>
-  <% @books.each do | book | %>
-    <div class=<%= "flipbook-#{book.format}" %> style='margin-bottom: 20px; margin-top: 50px;'>
-      <div class='hard'> <%= image_tag "#{to_folder_name(book.name)}/jpg/cover", size: page_size(book.format) %> Cover </div>
-      <div class="hard"> <%= image_tag "#{to_folder_name(book.name)}/jpg/first-page", size: page_size(book.format) %> Page 1</div>
 
-      <% (2..book.page_count - 2).each do | page | %>
-        <div> <%= image_tag "#{to_folder_name(book.name)}/jpg/page-#{page}", size: page_size(book.format) %> Page <%= page %> </div>
-      <% end %>
-      
-      <div> <%= image_tag "#{to_folder_name(book.name)}/jpg/penultimate-page", size: page_size(book.format) %> Page <%= book.page_count-1 %> </div>
-
-      <div class="hard"><%= image_tag "#{to_folder_name(book.name)}/jpg/last-page", size: page_size(book.format) %> Page <%= book.page_count %> </div>
-      <div class="hard"><%= image_tag "#{to_folder_name(book.name)}/jpg/back-cover", size: page_size(book.format) %> Back Cover </div>
-    </div>
-  <% end %>
 </div>
