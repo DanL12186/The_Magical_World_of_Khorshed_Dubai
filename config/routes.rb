@@ -13,5 +13,3 @@ Rails.application.routes.draw do
   resources :books
   resources :cards
 end
-
-#4. Configure my routes so that get points to messages#new and post points to messages#create.
