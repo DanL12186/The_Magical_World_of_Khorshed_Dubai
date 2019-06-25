@@ -44,7 +44,7 @@ document.addEventListener('turbolinks:load', function() {
   }
    
   /* Load turn.js responsive book */
-  function loadBook(bookId) {
+  const loadBook = bookId => {
     let fitInitialWindow,
         size;
 
