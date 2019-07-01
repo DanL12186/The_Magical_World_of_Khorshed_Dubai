@@ -34,8 +34,8 @@ document.addEventListener('turbolinks:load', function() {
     const lazyPages = document.getElementsByClassName(`page lazy ${bookId}`)
 
     for (let i = 0; i < lazyPages.length; i++) {
-      const page = lazyPages[i]
-      ,     imageLink = `/assets/${page.getAttribute('image_placeholder')}`
+      const page = lazyPages[i],
+            imageLink = `/assets/${page.getAttribute('image_placeholder')}`
       
       noWebPSupport.then(noWebP => {
         page.src = noWebP ? imageLink.replace(/webp/g, 'jpg') : imageLink
@@ -48,14 +48,14 @@ document.addEventListener('turbolinks:load', function() {
     let fitInitialWindow,
         size;
 
-    const book = document.getElementById(bookId)
-    ,     format = book.getAttribute('data-format')
-    ,     additionalHeight = () => format == 'single' ? size.height * 0.08 : 0  
+    const book = document.getElementById(bookId),
+          format = book.getAttribute('data-format'),
+          additionalHeight = () => format == 'single' ? size.height * 0.08 : 0;
     
     const setBookAndModal = () => {
       size = modal.resize();
       $(modal.book).turn('size', size.width, size.height + additionalHeight());
-    }
+    };
     
     //JS object representing the modal, containing the book and its properties + relevant functions
     const modal = {
@@ -103,12 +103,11 @@ document.addEventListener('turbolinks:load', function() {
             width: null,
             height: null
         });
-        
         // hide the body overflow
         document.body.className = 'hide-overflow';
       }
     };
-
+    
     modal.init(bookId);
   };
 
