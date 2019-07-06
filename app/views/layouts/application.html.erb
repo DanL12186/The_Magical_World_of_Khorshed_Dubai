@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title> 
+    <title>
       <%= content_for?(:title) ? yield(:title) : 'Dubash Designs' %> 
     </title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Illustrated Children's Books">
+    <meta name="author" content="Khorshed Dubash">
+
     <%= favicon_link_tag asset_path('favicon.ico'), rel: 'icon', type: 'image/x-icon' %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
