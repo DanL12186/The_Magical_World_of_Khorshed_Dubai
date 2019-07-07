@@ -77,18 +77,19 @@
   opacity: 0.95;
 }
 
-
-//=======box-shadow for books on front page
-
-#pj-section-pic-1-div, #displayed-book-cover-home {
-  box-shadow: 1px 1px 18px rgba(0,0,0,1.0);
-}
-
 .static-img {
-  cursor: pointer;
-}
+    cursor: pointer;
 
+    &.static-img-js {
+        transition: 0.25s;
+        box-shadow: 1px 1px 18px rgba(0,0,0,1.0);
+        position: relative;
+        z-index: 1;
 
-.hcover {
-  box-shadow: 1px 1px 18px rgba(0,0,0,1.0);
+        &:hover {
+            transform: scale(1.08);
+            box-shadow: 10px 10px 25px rgb(0, 0, 0);
+            border-radius: 1%;
+        }
+    }
 }
