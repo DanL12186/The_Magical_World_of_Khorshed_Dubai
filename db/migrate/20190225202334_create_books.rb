@@ -6,6 +6,7 @@ class CreateBooks < ActiveRecord::Migration[5.2]
       t.string :age_group
       t.string :format
 
+      #total number of pages not including front and back cover (n-2)
       t.integer :page_count
     end
   end
