@@ -37,6 +37,7 @@ document.addEventListener('turbolinks:load', function() {
       const page = lazyPages[i],
             imageLink = `/assets/${page.getAttribute('image_placeholder')}`
       
+      //Convert .lazy WebP -> JPEG if browser doesn't support WebP
       noWebPSupport.then(noWebP => {
         page.src = noWebP ? imageLink.replace(/webp/g, 'jpg') : imageLink
       })
@@ -50,8 +51,10 @@ document.addEventListener('turbolinks:load', function() {
 
     const book = document.getElementById(bookId),
           format = book.getAttribute('data-format'),
+          pageWidth = book.getAttribute('data-width'),
+          pageHeight = book.getAttribute('data-height'),
           additionalHeight = () => format == 'single' ? size.height * 0.08 : 0;
-    
+
     const setBookAndModal = () => {
       size = modal.resize();
       $(modal.book).turn('size', size.width, size.height + additionalHeight());
@@ -59,7 +62,8 @@ document.addEventListener('turbolinks:load', function() {
     
     //JS object representing the modal, containing the book and its properties + relevant functions
     const modal = {
-      ratio: format == 'single' ? 1.535 : 2.62,
+      ratio: format == 'single' ? 1.54 : pageWidth * 2 / pageHeight,
+      
       init: function() {
         this.book = book;
         this.plugins();
@@ -107,8 +111,8 @@ document.addEventListener('turbolinks:load', function() {
         document.body.className = 'hide-overflow';
       }
     };
-    
-    modal.init(bookId);
+
+    modal.init();
   };
 
   //when modal is clicked for the first time, load images, load book
