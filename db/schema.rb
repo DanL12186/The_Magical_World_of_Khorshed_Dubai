@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_04_165122) do
+ActiveRecord::Schema.define(version: 2019_07_08_154314) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 2019_04_04_165122) do
     t.string "format"
     t.integer "page_count"
     t.string "short_summary"
+    t.integer "pixel_width"
+    t.integer "pixel_height"
   end
 
   create_table "cards", force: :cascade do |t|
