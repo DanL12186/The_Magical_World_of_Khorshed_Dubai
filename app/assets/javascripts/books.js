@@ -127,7 +127,7 @@ document.addEventListener('turbolinks:load', function() {
 
     if (window.matchMedia("(orientation: portrait)").matches) {
       window.setTimeout(() => {
-        alert('Rotate your screen for a better view!')
+        swal('Rotate your screen for a better view!')
       }, 500);
     }
   })
