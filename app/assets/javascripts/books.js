@@ -112,13 +112,19 @@ document.addEventListener('turbolinks:load', function() {
   };
 
   //when modal is clicked for the first time, load images, load book
-  $("#pj-section-pic-1-div, #top-book-pic-1-div").on('click', function() {
+  $("#pj-section-pic-1-div, #pj-section-pic-2-div, #top-book-pic-1-div").on('click', function() {
     const bookId = this.getAttribute('data-bookname')
   
     if (!openedBooks[bookId]) {
       loadImages(bookId);
       loadBook(bookId);
       openedBooks[bookId] = true
+    }
+
+    if (window.matchMedia("(orientation: portrait)").matches) {
+      window.setTimeout(() => {
+        alert('Rotate your screen for a better view!')
+      }, 500);
     }
   })
 });
