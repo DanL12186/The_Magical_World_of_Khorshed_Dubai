@@ -4,6 +4,6 @@ module ApplicationHelper
   end
 
   def to_folder_name(name)
-    name.downcase.split.join('_')
+    name.downcase.split.join('_').delete('?')
   end
 end
