@@ -18,7 +18,7 @@ document.addEventListener('turbolinks:load', function() {
     setTimeout(() => {
       const unsupported = !!document.getElementsByClassName('no-webp').length
       resolve(unsupported);
-    }, 100);
+    }, 150);
   });
 
   //changes all non-CSS, non-lazy images to JPEG if browser lacks WebP support
