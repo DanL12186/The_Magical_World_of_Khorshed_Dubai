@@ -1,4 +1,4 @@
-<!-- Book Modal -->
+<!-- Reusable Book Modal -->
 <div class='modal fade' id="bookModalCenter<%= book.id %>" tabindex='-1' role='dialog' aria-labelledby='bookModalCenterTitle' aria-hidden='true'>
   <div class='modal-dialog modal-dialog-centered' role='document'>
     <div class='modal-content'>
@@ -8,10 +8,11 @@
           <span aria-hidden='true'>&times;</span>
         </button>
       </div>
+      
       <div class='modal-body'>
         <div class='t'>
           <div class='tc rel'> 
-            <div class='book' id="<%= book.name.downcase %>" data-format="<%= book.format %>" >
+            <%= tag(:div, class: 'book', id: book.name.downcase, data: { format: book.format, width: book.pixel_width, height: book.pixel_height }) %>
               <div class='hard'> 
                 <%= image_tag "#{to_folder_name(book.name)}/webp/cover.webp", class: 'page static-img-js'%> 
               </div>
