@@ -74,8 +74,8 @@ document.addEventListener('turbolinks:load', function() {
           fitInitialWindow = true;
         }
         
-        //after first click, on any future window resizing, update the book size
-        window.addEventListener('resize', ()=> setBookAndModal());
+        //after first click, update book size on any future window resizing, 
+        window.addEventListener('resize', () => setBookAndModal());
       },
       //gets new size requirements for modal and sets book size
       resize: function () {
@@ -115,6 +115,16 @@ document.addEventListener('turbolinks:load', function() {
     modal.init();
   };
 
+  //SweetAlert which tells user to change to landscape mode if they're in portrait mode
+  //timed to open after modal has loaded. Does not currently discriminate against non-mobile devices
+  const alertIfPortraitMode = () => {
+    if (window.matchMedia("(orientation: portrait)").matches) {
+      window.setTimeout(() => {
+        swal('Rotate your screen for a better view!')
+      }, 500);
+    }
+  }
+
   //when modal is clicked for the first time, load images, load book
   $("#pj-section-pic-1-div, #pj-section-pic-2-div, #top-book-pic-1-div").on('click', function() {
     const bookId = this.getAttribute('data-bookname')
@@ -125,10 +135,6 @@ document.addEventListener('turbolinks:load', function() {
       openedBooks[bookId] = true
     }
 
-    if (window.matchMedia("(orientation: portrait)").matches) {
-      window.setTimeout(() => {
-        swal('Rotate your screen for a better view!')
-      }, 500);
-    }
+    alertIfPortraitMode()
   })
 });
