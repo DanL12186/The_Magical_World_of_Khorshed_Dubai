@@ -118,12 +118,16 @@ document.addEventListener('turbolinks:load', function() {
   //SweetAlert which tells user to change to landscape mode if they're in portrait mode
   //timed to open after modal has loaded. Does not currently discriminate against non-mobile devices
   const alertIfPortraitMode = () => {
-    if (window.matchMedia("(orientation: portrait)").matches) {
+    if (!alertShown && window.matchMedia("(orientation: portrait)").matches) {
       window.setTimeout(() => {
         swal('Rotate your screen for a better view!')
       }, 500);
+      
+      alertShown = true
     }
   }
+
+  let alertShown;
 
   //when modal is clicked for the first time, load images, load book
   $("#pj-section-pic-1-div, #pj-section-pic-2-div, #top-book-pic-1-div").on('click', function() {
