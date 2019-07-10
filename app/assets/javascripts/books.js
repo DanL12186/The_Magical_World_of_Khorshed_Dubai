@@ -13,10 +13,10 @@ document.addEventListener('turbolinks:load', function() {
     }
   }
   
-  //waits to make sure Modernizr has fired and changed the DOM before determining WebP support
+  //waits to make sure Modernizr has fired and updated the DOM before determining WebP support
   const noWebPSupport = new Promise(resolve => {
     setTimeout(() => {
-      const unsupported = !!document.getElementsByClassName('no-webp').length
+      const unsupported = !!document.querySelector('.no-webp')
       resolve(unsupported);
     }, 150);
   });
@@ -115,8 +115,10 @@ document.addEventListener('turbolinks:load', function() {
     modal.init();
   };
 
-  //SweetAlert which tells user to change to landscape mode if they're in portrait mode
-  //timed to open after modal has loaded. Does not currently discriminate against non-mobile devices
+  //SweetAlert which tells user to change to landscape mode after modal has loaded if they're in portrait mode and have not yet seen alert
+  //Does not currently discriminate against non-mobile devices
+  let alertShown;
+
   const alertIfPortraitMode = () => {
     if (!alertShown && window.matchMedia("(orientation: portrait)").matches) {
       window.setTimeout(() => {
@@ -127,10 +129,10 @@ document.addEventListener('turbolinks:load', function() {
     }
   }
 
-  let alertShown;
-
   //when modal is clicked for the first time, load images, load book
   $("#pj-section-pic-1-div, #pj-section-pic-2-div, #top-book-pic-1-div").on('click', function() {
+    alertIfPortraitMode()
+    
     const bookId = this.getAttribute('data-bookname')
   
     if (!openedBooks[bookId]) {
@@ -139,6 +141,5 @@ document.addEventListener('turbolinks:load', function() {
       openedBooks[bookId] = true
     }
 
-    alertIfPortraitMode()
   })
 });
