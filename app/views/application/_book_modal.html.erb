@@ -17,7 +17,7 @@
                 <%= image_tag "#{to_folder_name(book.name)}/webp/cover.webp", class: 'page static-img-js'%> 
               </div>
               <div class='hard'> 
-                <%= image_tag "#{to_folder_name(book.name)}/webp/first-page.webp", class: 'page static-img-js' %> 
+                <%= image_tag "", image_placeholder: "#{to_folder_name(book.name)}/webp/first-page.webp", class: "page lazy #{book.name.downcase}" %> 
               </div>
 
              <!-- lazy load the rest of the pages upon clicking modal -->
