@@ -1,0 +1,34 @@
+.modal-content {
+    background-color: rgba(255, 255, 255, 0.8)
+}
+
+.modal-dialog {
+    max-width: 90%;
+    font-family: "Comic Sans MS", "Chicago"
+}
+
+.modal-header {
+    border-bottom: none;
+
+    #clickMeText {
+        margin-left: 50%;
+        font-size: 2vw;
+    }
+
+    .t {
+        display: table;
+        width: 100%;
+        height: auto;
+
+        .tc {
+            background-color: red;
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+    
+            &.rel {
+                position: relative;
+            }
+        }
+    }
+}

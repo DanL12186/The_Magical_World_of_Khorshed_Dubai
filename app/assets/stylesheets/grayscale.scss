@@ -181,6 +181,11 @@
   color: black;
 }
 
+#about {
+  font-family: 'Dancing Script';
+  opacity: 0.95;
+}
+
 .about-section {
   padding-top: 25rem;
   background: linear-gradient(to bottom, #161616 0%, rgba(22, 22, 22, 0.2) 25%, rgba(22, 22, 22, 0.7) 100%), image-url("img/library.webp");
@@ -197,6 +202,10 @@
 .about-section p {
   margin-bottom: 15rem;
   font-size: 1.2rem;
+}
+
+.book-section {
+  padding: 5rem 5rem;
 }
 
 .projects-section {
