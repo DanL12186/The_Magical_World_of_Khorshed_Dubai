@@ -2,6 +2,7 @@
  * Start Bootstrap - Grayscale v5.0.5 (https://startbootstrap.com/template-overviews/grayscale)
  * Copyright 2013-2019 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-grayscale/blob/master/LICENSE)
+ * (Modified for this site)
  */
 
 #mainNav {
@@ -187,21 +188,23 @@
 }
 
 .about-section {
-  padding-top: 25rem;
+  padding-top: 10rem;
+  padding-bottom: 15rem;
   background: linear-gradient(to bottom, #161616 0%, rgba(22, 22, 22, 0.2) 25%, rgba(22, 22, 22, 0.7) 100%), image-url("img/library.webp");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: scroll;
+
+  p {
+    opacity: 0.7;
+    margin-bottom: 15rem;
+    font-size: 1.35rem;
+  }
 }
 
 .no-webp .about-section {
   background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(22, 22, 22, 0.2)), color-stop(25%, rgba(22, 22, 22, 0.3)), to(#161616)), image-url("img/library.jpg");
-}
-
-.about-section p {
-  margin-bottom: 15rem;
-  font-size: 1.2rem;
 }
 
 .book-section {
