@@ -10,8 +10,6 @@ module TheMagicalWorldOfKhorshedDubai
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
-    config.assets.paths << Rails.root.join('node_modules/startbootstrap-grayscale/js')
-    config.assets.paths << Rails.root.join('node_modules/startbootstrap-grayscale/scss')
     #enable text compression
     config.middleware.insert_after(::Rack::Runtime, Rack::Deflater)
     
