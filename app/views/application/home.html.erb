@@ -9,10 +9,10 @@
 
       //load Niconne font on non-OS X platforms as substitute for Apple Chancery font for .masthead h1
       if (!/Mac/.test(userPlatform) || /iP(ad|hone)/.test(userPlatform)) {
-        document.head.innerHTML += `<link href="https://fonts.googleapis.com/css?family=Niconne&display=swap" rel="stylesheet">`
+        document.head.innerHTML += `<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Niconne&display=swap">`
       }
 
-      //do not preload fonts on systems which don't support preloading. (Edge is adding support with Edge 75+)
+      //load fonts for browsers which don't support preloading. (Edge is adding support with Edge 75+)
       if (/Edge|Firefox/.test(userPlatform)) {
         document.head.innerHTML += `<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:400,700">`
         document.head.innerHTML += `<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Dancing+Script">`
