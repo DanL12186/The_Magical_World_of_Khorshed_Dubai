@@ -115,12 +115,14 @@ document.addEventListener('turbolinks:load', function() {
     modal.init();
   };
 
-  //SweetAlert which tells user to change to landscape mode after modal has loaded if they're in portrait mode and have not yet seen alert
-  //Does not currently discriminate against non-mobile devices
+  //should properly detect at least 98% of mobile devices
+  const isLikelyMobileDevice = () => navigator.maxTouchPoints > 0 || /iP(hone|ad)|UCBrowser/.test(navigator.userAgent)
+  
+  //A SweetAlert which tells user to change to landscape mode after modal has loaded if they're in portrait mode and have not yet seen alert
   let alertShown;
 
   const alertIfPortraitMode = () => {
-    if (!alertShown && window.matchMedia("(orientation: portrait)").matches) {
+    if (!alertShown && window.matchMedia("(orientation: portrait)").matches && isLikelyMobileDevice()) {
       window.setTimeout(() => {
         swal('Rotate your screen for a better view!')
       }, 500);
