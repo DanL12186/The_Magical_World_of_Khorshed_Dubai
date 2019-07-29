@@ -1,24 +1,18 @@
 <html lang="en">
-  <head>
-    <!-- Custom fonts for home page -->
-    <link rel="preload" href="https://fonts.googleapis.com/css?family=Nunito:400,700" as="style" onload="this.rel='stylesheet'">
-    <link rel="preload" href="https://fonts.googleapis.com/css?family=Dancing+Script" as="style" onload="this.rel='stylesheet'">
-    
-    <script>
-      const userPlatform = window.navigator.userAgent
+  <script>
+    const userPlatform = window.navigator.userAgent
 
-      //load Niconne font on non-OS X platforms as substitute for Apple Chancery font for .masthead h1
-      if (!/Mac/.test(userPlatform) || /iP(ad|hone)/.test(userPlatform)) {
-        document.head.innerHTML += `<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Niconne&display=swap">`
-      }
+    //load Niconne font on non-OS X platforms as substitute for Apple Chancery font for .masthead h1
+    if (!/Mac/.test(userPlatform) || /iP(ad|hone)/.test(userPlatform)) {
+      document.head.innerHTML += `<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Niconne&display=swap">`
+    }
 
-      //load fonts for browsers which don't support preloading. (Edge is adding support with Edge 75+)
-      if (/Edge|Firefox/.test(userPlatform)) {
-        document.head.innerHTML += `<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:400,700">`
-        document.head.innerHTML += `<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Dancing+Script">`
-      }
-    </script>
-  </head>
+    //load fonts for browsers which don't support preloading. (Edge is adding support with Edge 75+)
+    if (/Edge|Firefox/.test(userPlatform)) {
+      document.head.innerHTML += `<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:400,700">`
+      document.head.innerHTML += `<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Dancing+Script">`
+    }
+  </script>
 
   <body id="page-top">
     <!-- Navigation -->
