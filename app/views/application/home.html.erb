@@ -4,13 +4,12 @@
 
     //load Niconne font on non-OS X platforms as substitute for Apple Chancery font for .masthead h1
     if (!/Mac/.test(userPlatform) || /iP(ad|hone)/.test(userPlatform)) {
-      document.head.innerHTML += `<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Niconne&display=swap">`
+      document.head.innerHTML += `<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Niconne">`
     }
 
     //load fonts for browsers which don't support preloading. (Edge is adding support with Edge 75+)
     if (/Edge|Firefox/.test(userPlatform)) {
-      document.head.innerHTML += `<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:400,700">`
-      document.head.innerHTML += `<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Dancing+Script">`
+      document.head.innerHTML += `<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:400,700|Dancing+Script">`
     }
   </script>
 
@@ -168,6 +167,6 @@
     <!-- jQuery easing for smooth section transitions -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js" async></script>
     <!-- SweetAlerts2 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" async></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" defer></script>
   </body>
 </html>
