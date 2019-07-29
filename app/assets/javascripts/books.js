@@ -1,7 +1,8 @@
 'use strict';
 
 document.addEventListener('turbolinks:load', function() {
-  const openedBooks = {};
+  const openedBooks = new Set;
+  let   alertShown;
 
   //changes all initially-loaded images from webp => jpeg, although also gets rid of fingerprinting
   const changeStaticWebPToJPG = () => {
@@ -117,30 +118,29 @@ document.addEventListener('turbolinks:load', function() {
 
   //should properly detect at least 98% of mobile devices
   const isLikelyMobileDevice = () => navigator.maxTouchPoints > 0 || /iP(hone|ad)|UCBrowser/.test(navigator.userAgent)
-  
-  //A SweetAlert which tells user to change to landscape mode after modal has loaded if they're in portrait mode and have not yet seen alert
-  let alertShown;
 
-  const alertIfPortraitMode = () => {
-    if (!alertShown && window.matchMedia("(orientation: portrait)").matches && isLikelyMobileDevice()) {
-      window.setTimeout(() => {
-        swal('Rotate your screen for a better view!')
-      }, 500);
-      
-      alertShown = true
-    }
+  const isPortrait = () => window.matchMedia("(orientation: portrait)").matches
+
+  //A SweetAlert which tells user to change to landscape mode after modal has loaded if they're in portrait mode and have not yet seen alert
+  const alertPortraitMode = () => {
+    window.setTimeout(() => {
+      swal('Rotate your screen for a better view!')
+    }, 500);
   }
 
   //when modal is clicked for the first time, load images, load book
   $("#pj-section-pic-1-div, #pj-section-pic-2-div, #top-book-pic-1-div").on('click', function() {
-    alertIfPortraitMode()
+    if (!alertShown && isPortrait() && isLikelyMobileDevice()) {
+      alertPortraitMode()
+      alertShown = true
+    }
     
     const bookId = this.getAttribute('data-bookname')
   
-    if (!openedBooks[bookId]) {
+    if (!openedBooks.has(bookId)) {
       loadImages(bookId);
       loadBook(bookId);
-      openedBooks[bookId] = true
+      openedBooks.add(bookId)
     }
 
   })
