@@ -1,6 +1,6 @@
 <html lang="en">
   <script>
-    const userPlatform = window.navigator.userAgent
+    const userPlatform = navigator.userAgent
 
     //load Niconne font on non-OS X platforms as substitute for Apple Chancery font for .masthead h1
     if (!/Mac/.test(userPlatform) || /iP(ad|hone)/.test(userPlatform)) {
@@ -145,11 +145,11 @@
       <div class="container">
         <div class="card py-4 h-100">
           <div class="card-body text-center">
-            <h4 class="text-uppercase m-0"> <%= link_to("Email", messages_path) %> </h4>
+          <!-- Trigger the modal with a button -->
+            <h4 class="m-0 green" data-toggle="modal" data-target="#emailModal">Email</h4>
+            <%= render partial: "email_modal" %>
             <hr class="my-4">
-            <div class="small text-black-50">
-              <%= link_to("daniel.lempesis@gmail.com", messages_path) %>
-            </div>
+            <div> <%= link_to("daniel.lempesis@gmail.com", '#', class: 'small', data: { toggle: 'modal', target: '#emailModal'}) %> </div>
           </div>
         </div>
       </div>
