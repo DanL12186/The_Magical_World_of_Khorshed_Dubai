@@ -1,10 +1,19 @@
 .modal-content {
-    background-color: rgba(255, 255, 255, 0.8)
+    background-color: rgba(255, 255, 255, 0.8);
+
+    &.email {
+        background-color: rgba(255, 255, 255, 0.92);
+        font-family: Nunito;
+    }
 }
 
 .modal-dialog {
     max-width: 90%;
-    font-family: "Comic Sans MS", "Chicago"
+    font-family: "Comic Sans MS", "Chicago";
+    
+    &.email {
+        max-width: 1200px;
+    }
 }
 
 .modal-header {
@@ -21,7 +30,6 @@
         height: auto;
 
         .tc {
-            background-color: red;
             display: table-cell;
             vertical-align: middle;
             text-align: center;
