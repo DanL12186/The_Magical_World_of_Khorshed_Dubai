@@ -7,9 +7,8 @@ Rails.application.routes.draw do
   get '/pages/about'
   
   #should/could prob do this as resources, only: [:post, :get]
-  get '/messages' => 'messages#new'
   post '/messages' => 'messages#create'
 
-  resources :books
-  resources :cards
+  resources :books, only: [:index]
+  # resources :cards
 end
