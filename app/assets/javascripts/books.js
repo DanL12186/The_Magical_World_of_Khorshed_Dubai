@@ -35,8 +35,8 @@ document.addEventListener('turbolinks:load', function() {
     const lazyPages = document.getElementsByClassName(`page lazy ${bookId}`)
 
     for (let i = 0; i < lazyPages.length; i++) {
-      const page = lazyPages[i],
-            imageLink = `/assets/${page.getAttribute('image_placeholder')}`
+      const page = lazyPages[i];
+      const imageLink = `/assets/${page.getAttribute('image_placeholder')}`;
       
       //Convert .lazy WebP -> JPEG if browser doesn't support WebP
       noWebPSupport.then(noWebP => {
