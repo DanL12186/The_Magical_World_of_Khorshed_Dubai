@@ -92,7 +92,7 @@
                       </div>
                       <!--Text-->
                       <div class="item-box-blog-text">
-                        <p> <%= Book.find(2).short_summary.truncate(50) %> </p>
+                        <p> <%= Book.all[1].short_summary.truncate(50) %> </p>
                       </div>
                       <div class="mt"> <a href="#" tabindex="0" class="btn bg-blue-ui white read">read more</a> </div>
                       <!--Read More Button-->
