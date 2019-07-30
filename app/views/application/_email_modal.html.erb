@@ -11,7 +11,7 @@
 
       <div class="modal-body">
       
-        <%= form_with model: @message do | f | %>
+        <%= form_with model: @message, id: 'emailForm' do | f | %>
           
           <div class='form-group row p-3'>
             <%= f.label :name, class: "col-sm-2 col-form-label" %>
@@ -44,7 +44,7 @@
 
           <div class="form-group row p-3">
             <div class="col-sm-10">
-              <%= f.submit('Send Email', class: "btn btn-primary") %>
+              <%= f.submit('Send Email', class: "btn btn-primary", id: "submitEmail") %>
             </div>
           </div>
         <% end %>
@@ -52,3 +52,14 @@
     </div>
   </div>
 </div>
+
+<script>
+  //temporary solution for clearing and hiding the modal when submit button is clicked.
+  //does not work on submit, and will close even when nothing has been filled out
+  $('#submitEmail').on('click', event => {
+    setTimeout(() => {
+      $('#emailModal').modal('hide');
+      $('#emailForm').trigger('reset')
+    }, 500)
+  });
+</script>
