@@ -9,34 +9,23 @@ $green-theme: #64a19d;
 #mainNav {
   min-height: 56px;
   background-color: #fff;
-}
 
-#mainNav .navbar-toggler {
-  font-size: 80%;
-  padding: 0.75rem;
-  color: $green-theme;
-  border: 1px solid $green-theme;
-}
+  .navbar-brand {
+    color: #161616;
+    font-weight: 700;
+    padding: .9rem 0;
+  }
 
-#mainNav .navbar-toggler:focus {
-  outline: none;
-}
+  .navbar-toggler {
+    font-size: 80%;
+    padding: 0.75rem;
+    color: $green-theme;
+    border: 1px solid $green-theme;
 
-#mainNav .navbar-brand {
-  color: #161616;
-  font-weight: 700;
-  padding: .9rem 0;
-}
-
-#mainNav .navbar-nav .nav-item:hover {
-  color: fade(white, 80%);
-  outline: none;
-  background-color: transparent;
-}
-
-#mainNav .navbar-nav .nav-item:active, #mainNav .navbar-nav .nav-item:focus {
-  outline: none;
-  background-color: transparent;
+    &:focus {
+      outline: none;
+    }
+  }
 }
 
 #inputEmail {
@@ -51,25 +40,30 @@ $green-theme: #64a19d;
     background-color: transparent;
     -webkit-transition: background-color 0.3s ease-in-out;
     transition: background-color 0.3s ease-in-out;
+
+    .navbar-brand {
+      padding: .5rem 0;
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    .nav-link {
+      -webkit-transition: none;
+      transition: none;
+      padding: 2rem 1.5rem;
+      color: rgba(0, 0, 0, 0.95);
+      font-size: 120%;
+      font-weight: 700;
+
+      &:hover {
+        color: rgba(255, 255, 255, 0.75);
+      }
+      &:active {
+        color: white;
+      }
+    }
   }
-  #mainNav .navbar-brand {
-    padding: .5rem 0;
-    color: rgba(255, 255, 255, 0.75);
-  }
-  #mainNav .nav-link {
-    -webkit-transition: none;
-    transition: none;
-    padding: 2rem 1.5rem;
-    color: rgba(0, 0, 0, 0.95);
-    font-size: 120%;
-    font-weight: 700;
-  }
-  #mainNav .nav-link:hover {
-    color: rgba(255, 255, 255, 0.75);
-  }
-  #mainNav .nav-link:active {
-    color: white;
-  }
+
+  
   #mainNav.navbar-shrink {
     background-color: #fff;
   }
@@ -106,27 +100,22 @@ $green-theme: #64a19d;
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-size: cover;
-}
 
-//fallback for browsers like Safari + iOS browsers which don't support webp formats
-.no-webp .masthead {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(22, 22, 22, 0.1)), color-stop(75%, rgba(22, 22, 22, 0.5)), to(#161616)), image-url("img/bg-masthead.jpg");
-}
+  h1 {
+    font-family: 'Apple Chancery', 'Niconne', cursive;
+    font-size: 2.5rem;
+    line-height: 2.5rem;
+    letter-spacing: 0.0rem;
+    background: -webkit-linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.25));
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+  }
 
-.masthead h1 {
-  font-family: 'Apple Chancery', 'Niconne', cursive;
-  font-size: 2.5rem;
-  line-height: 2.5rem;
-  letter-spacing: 0.0rem;
-  background: -webkit-linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.25));
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
-}
-
-.masthead h2 {
-  max-width: 20rem;
-  font-size: 1rem;
+  h2 {
+    max-width: 20rem;
+    font-size: 1rem;
+  }
 }
 
 @media (min-width: 768px) {
