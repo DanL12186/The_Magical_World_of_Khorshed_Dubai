@@ -12,7 +12,6 @@
 //
 //= require rails-ujs
 //= require bootstrap-sprockets
-//= require turbolinks
 //= require turn
 //= require detectWebPSupport.min
 //= require_tree .

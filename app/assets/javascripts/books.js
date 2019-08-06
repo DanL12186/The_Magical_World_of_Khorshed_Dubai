@@ -1,6 +1,6 @@
 'use strict';
 
-document.addEventListener('turbolinks:load', function() {
+window.addEventListener('load', function() {
   const openedBooks = new Set;
   let   alertShown;
 
