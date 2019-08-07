@@ -11,7 +11,10 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require bootstrap-sprockets
+//= require bootstrap/util
+//= require bootstrap/collapse
+//= require bootstrap/modal
+//= require bootstrap/scrollspy
 //= require turn
 //= require detectWebPSupport.min
 //= require_tree .
