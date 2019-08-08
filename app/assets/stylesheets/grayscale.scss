@@ -28,10 +28,6 @@ $green-theme: #64a19d;
   }
 }
 
-#inputEmail {
-  background: -webkit-linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.5));
-}
-
 @media (min-width: 992px) {
   #mainNav {
     padding-top: 0;
@@ -63,7 +59,6 @@ $green-theme: #64a19d;
     }
   }
 
-  
   #mainNav.navbar-shrink {
     background-color: #fff;
   }
@@ -116,6 +111,11 @@ $green-theme: #64a19d;
     max-width: 20rem;
     font-size: 1rem;
   }
+}
+
+//fallback for browsers like Safari + iOS browsers which don't support webp formats
+.no-webp .masthead {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(22, 22, 22, 0.1)), color-stop(75%, rgba(22, 22, 22, 0.5)), to(#161616)), image-url("img/bg-masthead.jpg");
 }
 
 @media (min-width: 768px) {
@@ -315,6 +315,10 @@ body {
 
 a, .green {
   color: $green-theme;
+}
+
+#inputEmail {
+  background: -webkit-linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.5));
 }
 
 a:focus, a:hover, .green {
