@@ -17,27 +17,27 @@
                 <%= image_tag "#{to_folder_name(book.name)}/webp/cover.webp", class: 'page static-img-js'%> 
               </div>
               <div class='hard'> 
-                <%= image_tag "", image_placeholder: "#{to_folder_name(book.name)}/webp/first-page.webp", class: "page lazy #{book.name.downcase}" %> 
+                <%= fingerprinted_dual_format_lazy_image(book.name, "first-page") %>
               </div>
 
              <!-- lazy load the rest of the pages upon clicking modal -->
               <% (2..book.page_count - 2).each do | page | %>
                 <div> 
-                  <%= image_tag "", image_placeholder: "#{to_folder_name(book.name)}/webp/page-#{page}.webp", class: "page lazy #{book.name.downcase}" %>
+                  <%= fingerprinted_dual_format_lazy_image(book.name, page) %>
                 </div>
               <% end %>
 
               <div> 
-                <%= image_tag "", image_placeholder: "#{to_folder_name(book.name)}/webp/penultimate-page.webp", class: "page lazy #{book.name.downcase}" %> 
+                <%= fingerprinted_dual_format_lazy_image(book.name, "penultimate-page") %> 
               </div>
 
               <!-- last two pages (the last page and the back cover) represent the hardcover back of the book -->
               <div class='hard'>
-                <%= image_tag "", image_placeholder: "#{to_folder_name(book.name)}/webp/last-page.webp", class: "page lazy #{book.name.downcase}" %> 
+                <%= fingerprinted_dual_format_lazy_image(book.name, "last-page") %>
               </div>
 
               <div class='hard'> 
-                <%= image_tag "", image_placeholder: "#{to_folder_name(book.name)}/webp/back-cover.webp", class: "page lazy #{book.name.downcase}" %> 
+                <%= fingerprinted_dual_format_lazy_image(book.name, "back-cover") %>
               </div>
             </div>
             

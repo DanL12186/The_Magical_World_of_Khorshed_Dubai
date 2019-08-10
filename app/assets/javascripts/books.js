@@ -14,7 +14,7 @@ window.addEventListener('load', function() {
     }
   }
   
-  //waits to make sure Modernizr has fired and updated the DOM before determining WebP support
+  //waits w/timeout to make sure Modernizr has fired and updated the DOM before determining WebP support
   const noWebPSupport = new Promise(resolve => {
     setTimeout(() => {
       const unsupported = !!document.querySelector('.no-webp')
@@ -35,12 +35,13 @@ window.addEventListener('load', function() {
     const lazyPages = document.getElementsByClassName(`page lazy ${bookId}`)
 
     for (let i = 0; i < lazyPages.length; i++) {
-      const page = lazyPages[i];
-      const imageLink = `/assets/${page.getAttribute('image_placeholder')}`;
+      const page      = lazyPages[i];
+      const webpImage = `/assets/${page.getAttribute('webp_src')}`;
+      const jpgImage  = `/assets/${page.getAttribute('jpg_src')}`;
       
       //Convert .lazy WebP -> JPEG if browser doesn't support WebP
       noWebPSupport.then(noWebP => {
-        page.src = noWebP ? imageLink.replace(/webp/g, 'jpg') : imageLink
+        page.src = noWebP ? jpgImage : webpImage
       })
     };
   }
