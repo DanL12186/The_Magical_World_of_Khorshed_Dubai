@@ -81,7 +81,7 @@ window.addEventListener('load', function() {
       },
       //gets new size requirements for modal and sets book size
       resize: function () {
-        let width  = window.innerWidth * 0.8,
+        let width  = Math.round(window.innerWidth * 0.8),
             height = Math.round(width / this.ratio),
             padded = Math.round(window.innerHeight * 0.75);
 
