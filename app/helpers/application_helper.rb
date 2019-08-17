@@ -3,13 +3,13 @@ module ApplicationHelper
     content_for(:title) { page_name }
   end
 
-  def to_folder_name(name)
+  def to_file_name(name)
     name.downcase.split.join('_').delete('?')
   end
 
   #gets the fingerprinted file for a given input (e.g. "Sir Joe's Quest/webp/page-6.webp" -> "sir_joe's_quest/webp/page-6-f98dsf87689wef8w9q87623g.webp")
   def get_fingerprint(input_str)
-    file_name = to_folder_name(input_str)
+    file_name = to_file_name(input_str)
     asset_digest_path(file_name)
   end
 
