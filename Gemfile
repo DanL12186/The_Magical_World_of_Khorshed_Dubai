@@ -34,6 +34,8 @@ gem 'figaro', '>= 1.1'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+gem 'newrelic_rpm'
+
 group :development, :test do
   gem 'pry'
 end
