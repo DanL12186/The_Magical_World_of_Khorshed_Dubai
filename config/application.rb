@@ -9,7 +9,7 @@ Bundler.require(*Rails.groups)
 module TheMagicalWorldOfKhorshedDubai
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 5.2
+    config.load_defaults 6.0
     #enable text compression
     config.middleware.insert_after(::Rack::Runtime, Rack::Deflater)
     
