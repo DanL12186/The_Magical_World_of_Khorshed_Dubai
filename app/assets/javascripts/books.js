@@ -8,11 +8,10 @@ window.addEventListener('load', function() {
   const changeStaticWebPToJPG = () => {
     const staticImages = document.getElementsByClassName('static-img-js')
 
-    for (let i = 0; i < staticImages.length; i++) {
-      const page = staticImages[i]
-      page.src = page.src.replace(/webp/g, 'jpg').replace(/-[^\.jpg]+/, '')
+    for (const image of staticImages) {
+      image.src = image.src.replace(/webp/g, 'jpg').replace(/-[^\.jpg]+/, '')
     }
-  }
+  };
   
   //waits w/timeout to make sure Modernizr has fired and updated the DOM before determining WebP support
   const noWebPSupport = new Promise(resolve => {
@@ -30,12 +29,10 @@ window.addEventListener('load', function() {
   });
 
   //load book's '.page lazy' images (pages 2 through n-3) on modal click, switching to JPEG if necessary depending on WebP support status 
-  //imperfect solution, as fingerprinting is bypassed completely, even for webp due to lack of rails image_tag
   const loadImages = bookId => {
     const lazyPages = document.getElementsByClassName(`page lazy ${bookId}`)
 
-    for (let i = 0; i < lazyPages.length; i++) {
-      const page      = lazyPages[i];
+    for (const page of lazyPages) {
       const webpImage = `/assets/${page.getAttribute('webp_src')}`;
       const jpgImage  = `/assets/${page.getAttribute('jpg_src')}`;
       
@@ -54,8 +51,9 @@ window.addEventListener('load', function() {
     const book = document.getElementById(bookId),
           format = book.getAttribute('data-format'),
           pageWidth = book.getAttribute('data-width'),
-          pageHeight = book.getAttribute('data-height'),
-          additionalHeight = () => format == 'single' ? size.height * 0.08 : 0;
+          pageHeight = book.getAttribute('data-height');
+
+    const additionalHeight = () => format === 'single' ? size.height * 0.08 : 0;
 
     const setBookAndModal = () => {
       size = modal.resize();
@@ -64,7 +62,7 @@ window.addEventListener('load', function() {
     
     //JS object representing the modal, containing the book and its properties + relevant functions
     const modal = {
-      ratio: format == 'single' ? 1.54 : pageWidth * 2 / pageHeight,
+      ratio: format === 'single' ? 1.54 : pageWidth * 2 / pageHeight,
       
       init: function() {
         this.book = book;
@@ -130,13 +128,13 @@ window.addEventListener('load', function() {
   }
 
   //when modal is clicked for the first time, load images, load book
-  $("#pj-section-pic-1-div, #pj-section-pic-2-div, #top-book-pic-1-div").on('click', function() {
+  $("#pj-section-pic-1-div, #pj-section-pic-2-div, #top-book-pic-1-div").on('click', event => {
     if (!alertShown && isPortrait() && isLikelyMobileDevice()) {
       alertPortraitMode()
       alertShown = true
     }
     
-    const bookId = this.getAttribute('data-bookname')
+    const bookId = event.currentTarget.getAttribute('data-bookname')
   
     if (!openedBooks.has(bookId)) {
       loadImages(bookId);
