@@ -12,18 +12,27 @@ window.addEventListener('load', function() {
       image.src = image.src.replace(/webp/g, 'jpg').replace(/-[^\.jpg]+/, '')
     }
   };
-  
+
+  //should properly detect at least 98% of mobile devices
+  const isLikelyMobileDevice = () => navigator.maxTouchPoints > 0 || /iP(hone|ad)|UCBrowser/.test(navigator.userAgent)
+  const isPortrait = () => window.matchMedia("(orientation: portrait)").matches
+
   //waits w/timeout to make sure Modernizr has fired and updated the DOM before determining WebP support
-  const noWebPSupport = new Promise(resolve => {
-    setTimeout(() => {
-      const unsupported = !!document.querySelector('.no-webp')
-      resolve(unsupported);
-    }, 150);
-  });
+  const determineWebPSupport = () => {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        const supported = !document.querySelector('.no-webp')
+        resolve(supported);
+      }, 150)
+    })
+  }
+
+  //determineWebPSupport returns a promise
+  const webPSupport = determineWebPSupport()
 
   //changes all non-CSS, non-lazy images to JPEG if browser lacks WebP support
-  noWebPSupport.then(noWebP => {      
-    if (noWebP) {
+  webPSupport.then(hasSupport => {
+    if (!hasSupport) {
       changeStaticWebPToJPG()
     }
   });
@@ -37,8 +46,8 @@ window.addEventListener('load', function() {
       const jpgImage  = `/assets/${page.getAttribute('jpg_src')}`;
       
       //Convert .lazy WebP -> JPEG if browser doesn't support WebP
-      noWebPSupport.then(noWebP => {
-        page.src = noWebP ? jpgImage : webpImage
+      webPSupport.then(hasSupport => {
+        page.src = hasSupport ? webpImage : jpgImage
       })
     };
   }
@@ -114,11 +123,6 @@ window.addEventListener('load', function() {
 
     modal.init();
   };
-
-  //should properly detect at least 98% of mobile devices
-  const isLikelyMobileDevice = () => navigator.maxTouchPoints > 0 || /iP(hone|ad)|UCBrowser/.test(navigator.userAgent)
-
-  const isPortrait = () => window.matchMedia("(orientation: portrait)").matches
 
   //A SweetAlert which tells user to change to landscape mode after modal has loaded if they're in portrait mode and have not yet seen alert
   const alertPortraitMode = () => {
