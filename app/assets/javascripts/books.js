@@ -1,6 +1,5 @@
-'use strict';
-
 window.addEventListener('load', function() {
+  'use strict';
   const openedBooks = new Set;
   let   alertShown;
 
