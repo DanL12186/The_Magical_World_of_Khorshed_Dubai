@@ -27,9 +27,6 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
-  # Store uploaded files on the local file system (see config/storage.yml for options)
-  config.active_storage.service = :local
-
   # Don't care if the mailer can't send.
   config.action_mailer.delivery_method = :mailgun
   
@@ -37,7 +34,6 @@ Rails.application.configure do
    api_key: 'ENV["MAILGUN_API_KEY"]',
    domain: "sandboxe2851e4f2a6046c7a8bb9702017d8211.mailgun.org",
   }
-
 
   config.action_mailer.raise_delivery_errors = false
 
