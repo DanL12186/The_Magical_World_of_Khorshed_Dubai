@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '>= 2.2.2'
+ruby '>= 2.5.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '>= 5.2'
@@ -34,7 +34,7 @@ gem 'figaro', '>= 1.1'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
-gem 'newrelic_rpm'
+# gem 'newrelic_rpm'
 
 group :development, :test do
   gem 'pry'
