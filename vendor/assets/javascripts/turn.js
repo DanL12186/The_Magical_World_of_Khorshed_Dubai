@@ -247,7 +247,7 @@ turnMethods = {
         css({'float': 'left'}).
         addClass('page p' + page + className);
 
-      if (!hasHardPage() &&  data.pageObjs[page].hasClass('hard')) {
+      if (data.pageObjs[page].hasClass('hard')) {
         data.pageObjs[page].removeClass('hard');
       }
 
@@ -321,15 +321,12 @@ turnMethods = {
   // Checks if a page is in memory
   
   hasPage: function(page) {
-
     return has(page, this.data().pageObjs);
-  
   },
 
   // Centers the flipbook
 
   center: function(page) {
-    
     var data = this.data(),
       size = $(this).turn('size'),
       left = 0;
@@ -3214,13 +3211,6 @@ function findPos(obj) {
 
   return offset;
 
-}
-
-// Checks if there's hard page compatibility
-// IE9 is the only browser that does not support hard pages
-
-function hasHardPage() {
-  return (navigator.userAgent.indexOf('MSIE 9.0')==-1);
 }
 
 // Request an animation
