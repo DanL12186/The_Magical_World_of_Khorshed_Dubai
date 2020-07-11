@@ -247,10 +247,6 @@ turnMethods = {
         css({'float': 'left'}).
         addClass('page p' + page + className);
 
-      if (data.pageObjs[page].hasClass('hard')) {
-        data.pageObjs[page].removeClass('hard');
-      }
-
       // Add page
       turnMethods._addPage.call(this, page);
 
