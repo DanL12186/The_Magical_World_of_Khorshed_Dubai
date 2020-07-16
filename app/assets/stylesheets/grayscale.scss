@@ -97,7 +97,7 @@ $green-theme: #64a19d;
   min-height: 35rem;
   padding: 15rem 0;
 
-  background-image: linear-gradient(to bottom, rgba(22, 22, 22, 0.1) 0%, rgba(22, 22, 22, 0.5) 75%, #161616 100%), url("img/bg-masthead-small.webp");
+  background-image: linear-gradient(to bottom, rgba(22, 22, 22, 0.1) 0%, rgba(22, 22, 22, 0.5) 75%, #161616 100%), image-url("img/bg-masthead-small.webp");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -151,7 +151,7 @@ $green-theme: #64a19d;
 //display a higher-res picture for larger, higher-end devices 
 @media (min-width: 1400px) {
   .masthead {
-    background-image: linear-gradient(to bottom, rgba(22, 22, 22, 0.1) 0%, rgba(22, 22, 22, 0.5) 75%, #161616 100%), url("img/bg-masthead.webp");
+    background-image: linear-gradient(to bottom, rgba(22, 22, 22, 0.1) 0%, rgba(22, 22, 22, 0.5) 75%, #161616 100%), image-url("img/bg-masthead.webp");
   }
 }
 //================ end top (masthead) section ===================
