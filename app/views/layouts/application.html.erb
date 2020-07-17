@@ -9,7 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Illustrated Children's Books">
     <meta name="author" content="Daniel Lempesis">
-    <meta name="image" property="og:image" content="https://www.dubashdesigns.com/assets/img/og-img.jpg">
+    
+    <meta name="image" property="og:image" content= <%= "https://www.dubashdesigns.com/assets/#{asset_digest_path('img/og-img.jpg')}" %>>
 
     <%= favicon_link_tag asset_path('favicon.png'), rel: 'icon', type: 'image/png' %>
 
