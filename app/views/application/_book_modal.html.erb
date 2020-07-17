@@ -14,7 +14,8 @@
           <div class='tc rel'> 
             <%= tag(:div, class: 'book', id: book.name.downcase, data: { format: book.format, width: book.pixel_width, height: book.pixel_height }) %>
               <div class='hard'> 
-                <%= image_tag "#{to_file_name(book.name)}/webp/cover.webp", class: 'page static-img-js'%> 
+                <%= fingerprinted_dual_format_static_image(book.name, '', 'page static-img-js') %>
+                
               </div>
               <!-- lazy load the rest of the pages upon clicking modal -->
               <div class='hard'> 

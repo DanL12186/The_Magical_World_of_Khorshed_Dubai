@@ -3,13 +3,14 @@ window.addEventListener('load', function() {
   const openedBooks = new Set;
   let   alertShown;
 
-  //changes all initially-loaded images from webp => jpeg, although also gets rid of fingerprinting
+  //changes all initially-loaded images from webp => jpeg
   const changeStaticWebPToJPG = () => {
     const staticImages = document.getElementsByClassName('static-img-js')
 
     for (const image of staticImages) {
-      image.src = image.src.replace(/webp/g, 'jpg').replace(/-[^\.jpg]+/, '')
+      image.src = image.getAttribute('jpg_src');
     }
+    
   };
 
   //should properly detect at least 98% of mobile devices

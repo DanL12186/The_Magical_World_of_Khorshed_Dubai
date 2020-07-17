@@ -23,11 +23,27 @@ module ApplicationHelper
     image_class = "page lazy #{book_name.downcase}"
     
     image_tag(
-      source  = '', 
+      src  = '', 
       options = {
         webp_src: webp, 
         jpg_src: jpg,
         class: image_class
+      }
+    )
+  end
+
+  #page-static-img-js are the issues
+  def fingerprinted_dual_format_static_image(book_name, id = '', klass = 'img-fluid static-img static-img-js')
+    jpg  = get_fingerprint("#{book_name}/jpg/cover.jpg")
+    webp = get_fingerprint("#{book_name}/webp/cover.webp")
+    
+    image_tag(
+      src = "/assets/#{webp}",
+      options = {
+        jpg_src: "/assets/#{jpg}",
+        class: klass,
+        alt: book_name,
+        id: id
       }
     )
   end
